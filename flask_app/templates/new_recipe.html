@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>New Recipe</title>
+</head>
+<body>
+    <div class="container d-flex justify-content-around mx-5">
+        <form action="/recipes/create" method="post">
+            <!-- Left Col -->
+            <div>
+                <div>
+                    <h1>Add a New Recipe</h1>
+                </div>
+                <div>
+                    {% with messages = get_flashed_messages() %}<!-- declare a variable called messages -->
+                    {% if messages %}<!-- check if there are any messages -->
+                    {% for message in get_flashed_messages(category_filter=['rec']) %}<!-- loop through the messages -->
+                    <p>{{message}}</p><!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Recipe name">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name='description' class="form-control" id="description" rows="4"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="instruction" class="form-label">Instructions</label>
+                    <textarea name='instruction' class="form-control" id="instruction" rows="8"></textarea>
+                </div>
+                <div>
+                    <p>Under Thirty Minutes?</p>
+                    <label for="true">Yes</label>
+                    <input type="radio" name="under_thirty" id="true" value="1">
+                    <label for="true">No</label>
+                    <input type="radio" name="under_thirty" id="false" value="0">
+                </div>
+                <div>
+                    <label for="date">Date Made</label>
+                    <input type="date" name="date" id="date">
+                </div>
+                <button class="d-flex align-self-center justify-self-center">Submit</button>
+            </div>
+        </form>
+            <!-- Right Col -->
+            <div>
+                <div class="d-flex align-content-center justify-content-between">
+                    <a href="">back to recipes</a>
+                    <a href="">logout</a>
+                </div>
+                <div></div>
+                <div></div>
+            </div>
+    </div>
+</body>
+</html>
