@@ -26,7 +26,7 @@ def new_recipe():
     if 'user_id' not in session:
         return redirect ('/recipes')
     if not Recipe.validate_recipe(request.form):
-        return redirect('/recipes')
+        return redirect('/recipes/new')
     data = {
         **request.form,
         'user_id' : session['user_id']
